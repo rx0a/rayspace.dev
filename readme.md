@@ -9,8 +9,8 @@ This is a full stack application built with rust and core web technologies. It u
 For more information, check out the [About This Site](https://www.rayspace.dev/about) section on the live site.
 
 ## Technologies Used
-* [HTML/CSS/JavaScript](https://developer.mozilla.org/en-US/docs/Learn)</br>
 * [Rust](https://www.rust-lang.org/)</br>
+* [HTML/CSS/JavaScript](https://developer.mozilla.org/en-US/docs/Learn)</br>
 * [Actix Web](https://actix.rs/)</br>
 * [SQLx](https://github.com/launchbadge/sqlx)</br>
 * [PostgreSQL](https://www.postgresql.org/)</br>
