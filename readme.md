@@ -13,6 +13,7 @@ For more information, check out the [About This Site](https://www.rayspace.dev/a
 * [HTML/CSS/JavaScript](https://developer.mozilla.org/en-US/docs/Learn)</br>
 * [Actix Web](https://actix.rs/)</br>
 * [SQLx](https://github.com/launchbadge/sqlx)</br>
+* [PostgreSQL](https://www.postgresql.org/)</br>
 
 ## Features
 * Single page application functionality with navigation handling and state persistence
