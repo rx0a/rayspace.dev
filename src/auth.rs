@@ -150,7 +150,7 @@ fn generate_secure_random_string(length: usize) -> String {
 pub fn generate_oauth_url(client_id: String, state: String) -> String {
     let redirect_uri = env::var("REDIRECT_URI").expect("Environment variable error");
     format!(
-        "https://github.com/login/oauth/authorize?client_id={}&redirect_uri={}&state={}&scope=user",
+        "https://github.com/login/oauth/authorize?client_id={}&redirect_uri={}&state={}&scope=read:user%20user:email",
         client_id,
         redirect_uri,
         state
