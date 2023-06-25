@@ -41,7 +41,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(
                 CookieSession::private(&secret_key)
-                    .secure(false) // <- this would be true in case of https
+                    .secure(true)
                     .name("User"),
             )
             .app_data(app_state.clone())
