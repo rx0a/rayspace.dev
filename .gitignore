@@ -1,0 +1,6 @@
+/target
+*.sh
+*.lock
+*.md
+.DS_Store
+.env

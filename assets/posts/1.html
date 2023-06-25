@@ -1,0 +1,126 @@
+<div class="post-container">
+    <h1 class="post-title">Minimalism in Web Development</h1>
+    <p><b>Disclaimer: </b>This is not a call for all developers to drop frameworks and this is not aimed at discrediting
+        any developer or their work, but rather to illustrate different philosophies in web
+        development. While it's not about being anti-framework or proclaiming minimalism as the superior approach, it's
+        more about shedding light on this viable, often underrated strategy.</p>
+    <blockquote>
+        "One man's constant is another man's variable." <span>Alan Perlis</span>
+    </blockquote>
+    <p>My journey of developing this site started with a search for minimalist developer portfolios. One of the websites
+        that I came across was <a href="https://leerob.io/" target="_blank">Lee Robinson's portfolio</a>. It truly
+        inspired me to utilize a similar minimalistic aesthetic.</p>
+    <p>Lee uses Next.js, Tailwind CSS, PlanetScale, and Vercel; utilizing the best these technologies has to offer. But
+        I had see if it would be feasible to re-create his design with just the foundational web technologies and Rust.
+    </p>
+    <p>
+        Lee acknowledges Rust's benefits and the potential for it to become the <a
+            href="https://leerob.io/blog/rust" target="_blank">future of JavaScript Infrastructure</a>. In this project,
+        however, I wanted to use Rust for creating the entire backend including the webserver. By using Rust as the
+        backend and avoiding any frameworks on the frontend, I wanted to experience the process of crafting a minimalist
+        website first-hand.
+    </p>
+    <h2>'Why?' You might ask</h2>
+    <p>While frontend frameworks can undoubtedly speed up the development process and help enforce some standards especially in
+        larger teams with diverse skillsets, it's also true that they can introduce limitations and lack of control.</p>
+    <p>For this website, I wanted absolute control and the barebones efficiency that only direct coding with HTML, CSS,
+        and JavaScript could offer. Since I'm the solo developer on this project, the benefits of having more control
+        heavily outweigh the benefits of using a frontend framework and I will touch on those points shorty.</p>
+    <p>Are you happy with your frameworks? Are you dependent on them? Were you ever frustrated by the shortcomings or
+        limitations of these frameworks?
+        Regardless of how you answer those questions, minimalism presents a viable approach that's becoming
+        increasingly accessible for all developers, with the potential to redefine the narrative in the web development
+        arena.</p>
+    <h2>The Philosophy</h2>
+    <blockquote>
+        "A well-used minimum suffices for everything."<span>Jules Verne</span>
+    </blockquote>
+    <p>Before we delve into the specifics of my approach, let's first clarify what minimalism in web development means.
+        It's about more than just using lightweight options or achieving high performance. It's an ethos that values
+        maintainability and control over complexity and convenience.</p>
+    <p>It recognizes the importance of understanding the foundational principles of web development and not being overly
+        reliant on frameworks and third-party dependencies. This philosophy influenced every decision I made while
+        building my website.</p>
+    <p>To be clear, I'm not advocating for this <a href="https://motherfuckingwebsite.com/"
+            target="_blank">motherfuckingwebsite.com</a> level of web or design minimalism. Instead, I want to take
+        advantage of the best and the latest but without introducing unnecessary limitations, complexity or bloat.</p>
+    <h2>The Frontend</h2>
+    <p>The first manifestation of my minimalist approach lies in the choice of technologies for frontend development.
+        Despite the allure of modern frameworks, I opted to build the frontend with foundational web technologies—HTML,
+        CSS, and JavaScript. Having more control over the code means having more control over performance, security, and
+        accessibility of your site. I will discuss these items further down the page.</p>
+    <p>
+        By just observing the live site and using nothing more than HTML, CSS, and JavaScript, I was able to
+        successfully recreate all of the interactive elements and features from Lee's site, such as the active link
+        highlighting, dynamic meta tags, navigation, and styling of blog posts, buttons, and other elements.
+    </p>
+    <p>
+        I have to admit, as I delved into the project, I became aware of the extensive thought and effort invested in
+        Lee's site, which were far greater than my initial assumptions. Even though this created some additional
+        challenges, it made the process more fun and increased my learning curve. Eventually, I was able to replicate
+        the site with elevated flexibility, customizability and performance, while retaining the maintainability.
+    </p>
+    <blockquote>
+        <b>Fun Fact: </b>I've built a Single Page Application (SPA) that emulates a Multi Page Application (MPA)
+        behavior by modifying the URL and maintaining browser history. Lee’s site, as a contrast, is a MPA that behaves
+        like a SPA.
+    </blockquote>
+    <p>However, this approach has not been without its trade-offs. One such trade-off to me was the absence of Server
+        Side Rendering (SSR) that comes with React and Next.js. I really like how snappy Lee’s initial page loads are. I
+        might revisit this aspect in the future and look for a way to implement SSR.</p>
+    <p>
+        With the adoption of <a href="https://webassembly.org" target="_blank">WebAssembly</a> on all major browsers,
+        its now possible to run Rust directly in the browser with near-native performance. As a result, there are some
+        Rust-based frontend frameworks that also offer SSR.
+        One such framework is <a href="https://yew.rs/" target="_blank">Yew</a>. I'm interested to see how Yew compares
+        to React and other frameworks, but that's a topic for another post.
+    </p>
+    <h2>The Backend</h2>
+    <blockquote>
+        "Simplicity is the ultimate sophistication."<span>Leonardo da Vinci</span>
+    </blockquote>
+    <p>I adopted a similar minimalist approach to backend development. As you already know by now, the backend of my
+        website is built with Rust, typically a systems programming language known for its speed and memory safety. The
+        speed and safety it guarantees made it a compelling choice for crafting an efficient, stripped-down, and an
+        inherently minimalistic backend.</p>
+    <p>In Rust, dependencies are called crates, and I had to be cognizant of my choices here. I wanted to implement all
+        the desired features at the lowest level feasible. I compared several web server crates and <a
+            href="https://actix.rs/" target="_blank">Actix Web</a> stood out as the most production-ready and barebones
+        option. The web server provides the serving of the SPA along with REST endpoints. It also manages the user
+        sessions and authentication for the guestbook section.
+    </p>
+    <p>Data management was entrusted to <a href="https://github.com/launchbadge/sqlx" target="_blank">SQLx</a>, an async
+        Rust crate that performs compile-time query checking, and <a href="https://www.postgresql.org/"
+            target="_blank">PostgreSQL</a>, a well-established, open-source relational database. In
+        summary, my backend development journey with Rust has provided robust tools that provide extremely fast and safe
+        webserver without the unnecessary overhead.</p>
+    <h2>The Benefits</h2>
+    <p>Adopting a minimalist approach can provide benefits in performance and security due to less third-party
+        dependencies. With a more focused, efficient approach, a minimalist website can perform better and
+        would potentially have less vulnerabilities.</p>
+    <p>But to me, one of the most important items here is accessibility. Frameworks can simplify achieving accessibility
+        to a great extent, but relying solely on them can be risky. I’ve seen developers build interfaces with frontend
+        frameworks that fall short of the inclusive design.</p>
+    <p>The path to a comprehensive understanding of accessibility isn’t through a magical framework, it requires an
+        understanding of the HTML and CSS features and how your users actually interact with your site. Hence,
+        irrespective of whether a framework is used or not, developers should have <s>a basic</s> proficiency in these
+        accessibility standards and how to they translate to these core web technologies.</p>
+    <p>Moreover, a minimalist approach grants you the freedom to utilize the latest, most innovative tech without
+        waiting for their adoption in frameworks. Technologies like HTML, CSS, and JavaScript shouldn't be treated as
+        ancient relics to stay away from. They evolve and great new features are being added. We all want a better web,
+        so why not be an early adopter in these core technologies?</p>
+    <h2>The Abstraction Layers</h2>
+    <p>In conclusion, my journey to embrace minimalism in web development is not a doctrine but a testament to the power
+        and potential of foundational web technologies. While frameworks offer undeniable advantages as abstraction
+        layers, returning to the basics provides an unparalleled level of control and room for customization. The
+        critical task for every developer is to balance these considerations and make informed decisions based on their
+        project's unique needs and constraints.
+    </p>
+    <p>Minimalism in web development isn't just a trend; it's a philosophy — one that encourages a holistic
+        understanding of web technologies and a dedication to crafting efficient, accessible, and responsive web
+        experiences.</p>
+    <p>In an era where generative AI might emerge as a new abstraction layer for web application development,
+        minimalism, aided by such advancements, could take a more prominent role. It's an exciting prospect that might
+        influence future trends in web development. After all, as developers, our pursuit should always be for cleaner,
+        simpler, and more efficient solutions.</p>
+</div>
