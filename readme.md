@@ -45,16 +45,14 @@ CREATE TABLE comments (
     userid VARCHAR(255),
     name VARCHAR(255),
     comment TEXT,
-    timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-);
+    timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP);
 ```
 ```sql
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
     published_date DATE NOT NULL,
-    views INTEGER NOT NULL
-);
+    views INTEGER NOT NULL);
 ```
 
 4. Set the required environment variables.
