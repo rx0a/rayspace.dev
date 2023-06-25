@@ -58,7 +58,13 @@ async fn main() -> std::io::Result<()> {
             .service(
                 fs::Files::new("/", "./assets")
                     .index_file("index.html")
-                    .use_last_modified(true),
+                    .use_last_modified(true)
+                    .default_headers(actix_web::http::header::CacheControl(
+                        vec![
+                            actix_web::http::header::CacheDirective::Public,
+                            actix_web::http::header::CacheDirective::MaxAge(3600),
+                        ]
+                    )),
             )
             .default_service(web::route().to(index))
     })
