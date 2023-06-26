@@ -26,6 +26,7 @@ For more information, check out the [About This Site](https://www.rayspace.dev/a
 * User authentication with GitHub OAuth
 * Secure user session management
 * Utilizing SQLx for secure database interactions
+<img width="396" alt="lighthouse" src="https://github.com/ryspc/rayspace.dev/assets/images/lighthouse.png">
 
 ## Running Locally
 If you are familiar with Rust, you can build the app from source and run your own instance. To build and run the application locally, follow these steps:
