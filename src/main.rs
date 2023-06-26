@@ -57,9 +57,9 @@ async fn main() -> std::io::Result<()> {
             )
             .service(
                 web::scope("/")
-                    .wrap(middleware::DefaultHeaders::new().header("Cache-Control", "max-age=3600"))
+                    .wrap(middleware::DefaultHeaders::new().add(("Cache-Control", "max-age=3600")))
                     .service(fs::Files::new("", "./assets").index_file("index.html").use_last_modified(true)),
-            )
+            )            
             .default_service(web::route().to(index))
     })
     .bind("0.0.0.0:3000")?
