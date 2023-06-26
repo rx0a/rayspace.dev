@@ -4,7 +4,7 @@ mod state;
 
 use actix_files as fs;
 use actix_session::{CookieSession};
-use actix_web::{web, App, HttpServer};
+use actix_web::{web, App, HttpResponse, HttpServer};
 use auth::auth_routes;
 use dotenv::dotenv;
 use hex;
@@ -15,9 +15,17 @@ use sqlx::{postgres::PgPoolOptions};
 use state::AppState;
 use std::env;
 
-async fn index() -> std::io::Result<fs::NamedFile> {
-    fs::NamedFile::open("./assets/index.html")
+async fn index() -> HttpResponse {
+    let file = fs::NamedFile::open("./assets/index.html");
+    match file {
+        Ok(f) => HttpResponse::build(StatusCode::NO_CONTENT).body(f),
+        Err(_) => HttpResponse::InternalServerError().finish(),
+    }
 }
+
+// async fn index() -> std::io::Result<fs::NamedFile> {
+//     fs::NamedFile::open("./assets/index.html")
+// }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
