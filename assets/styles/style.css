@@ -374,6 +374,7 @@ input::-moz-selection {
 .home-pic {
   width: 100px;
   height: 100px;
+  border-radius:50%;
 }
 
 .home-content {
