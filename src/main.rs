@@ -58,7 +58,7 @@ async fn main() -> std::io::Result<()> {
             .service(
                 web::scope("/")
                     .wrap(middleware::DefaultHeaders::new().add(("Cache-Control", "max-age=86400")))
-                    .service(fs::Files::new("/", "./assets").index_file("index.html").use_last_modified(true)),
+                    .service(fs::Files::new("", "assets").index_file("index.html").use_last_modified(true)),
             )        
             .default_service(web::route().to(index))
     })
