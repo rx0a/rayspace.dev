@@ -3,15 +3,15 @@ mod services;
 mod state;
 
 use actix_files as fs;
-use actix_session::CookieSession;
-use actix_web::{web, App, HttpServer, middleware};
+use actix_session::{CookieSession};
+use actix_web::{web, App, HttpServer};
 use auth::auth_routes;
 use dotenv::dotenv;
 use hex;
 use services::{
     create_comment, fetch_comments, fetch_posts, fetch_stars, update_views, user_status,
 };
-use sqlx::postgres::PgPoolOptions;
+use sqlx::{postgres::PgPoolOptions};
 use state::AppState;
 use std::env;
 
@@ -56,10 +56,10 @@ async fn main() -> std::io::Result<()> {
                     .service(fetch_stars),
             )
             .service(
-                web::scope("/")
-                    .wrap(middleware::DefaultHeaders::new().add(("Cache-Control", "max-age=86400")))
-                    .service(fs::Files::new("", "assets").index_file("index.html").use_last_modified(true)),
-            )        
+                fs::Files::new("/", "./assets")
+                    .index_file("index.html")
+                    .use_last_modified(true),
+            )
             .default_service(web::route().to(index))
     })
     .bind("0.0.0.0:3000")?
