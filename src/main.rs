@@ -3,67 +3,17 @@ mod services;
 mod state;
 
 use actix_files as fs;
-use actix_session::CookieSession;
-use actix_web::{
-    dev::{Service, ServiceRequest, ServiceResponse, Transform},
-    http::{header::CACHE_CONTROL, HeaderValue},
-    web, App, Error, HttpServer,
-};
+use actix_session::{CookieSession};
+use actix_web::{web, App, HttpServer};
 use auth::auth_routes;
 use dotenv::dotenv;
-use futures::future::{ok, Ready};
 use hex;
 use services::{
     create_comment, fetch_comments, fetch_posts, fetch_stars, update_views, user_status,
 };
-use sqlx::postgres::PgPoolOptions;
+use sqlx::{postgres::PgPoolOptions};
 use state::AppState;
 use std::env;
-
-struct CacheControlMiddleware;
-
-impl<S, B> Transform<S> for CacheControlMiddleware
-where
-    S: Service<Request = ServiceRequest, Response = ServiceResponse<B>, Error = Error>,
-    S::Future: 'static,
-    B: 'static,
-{
-    type Request = ServiceRequest;
-    type Response = ServiceResponse<B>;
-    type Error = Error;
-    type InitError = ();
-    type Transform = CacheControlMiddleware;
-    type Future = Ready<Result<Self::Transform, Self::InitError>>;
-
-    fn new_transform(&self, _: S) -> Self::Future {
-        ok(CacheControlMiddleware)
-    }
-}
-
-impl<S, B> Service for CacheControlMiddleware
-where
-    S: Service<Request = ServiceRequest, Response = ServiceResponse<B>, Error = Error>,
-    S::Future: 'static,
-    B: 'static,
-{
-    type Request = ServiceRequest;
-    type Response = ServiceResponse<B>;
-    type Error = Error;
-    type Future = S::Future;
-
-    fn poll_ready(&self, service: &mut S) -> std::task::Poll<Result<(), Self::Error>> {
-        service.poll_ready()
-    }
-
-    fn call(&self, mut service: ServiceRequest) -> Self::Future {
-        let headers = service.headers_mut();
-        headers.insert(
-            CACHE_CONTROL,
-            HeaderValue::from_static("max-age=86400"),
-        );
-        service.call(service.into_parts().0)
-    }
-}
 
 async fn index() -> std::io::Result<fs::NamedFile> {
     fs::NamedFile::open("./assets/index.html")
@@ -89,7 +39,6 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(move || {
         App::new()
-            .wrap(CacheControlMiddleware)
             .wrap(
                 CookieSession::private(&secret_key)
                     .secure(true)
