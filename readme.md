@@ -8,7 +8,8 @@ This is a full stack application built with rust and core web technologies. It u
 
 For more information, check out the [About This Site](https://www.rayspace.dev/about) section on the live site.
 
-This repository has been featured in the [Actix/examples](https://github.com/actix/examples) repository, showcasing the power of Actix Web in real-world applications.
+This repository has been included in the [Actix Examples](https://github.com/actix/examples) repository, which features practical applications of Actix Web.
+
 
 ## Technologies Used
 * [Rust](https://www.rust-lang.org/)</br>
