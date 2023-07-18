@@ -2,11 +2,13 @@
 🦀 My portfolio built with Rust and native web technologies.
 
 ## Overview
-The design of this site is inspired by the work of [Lee Robinson](https://github.com/leerob/leerob.io), but diverges in technical implementation.
+The design of this site is inspired by the work of [Lee Robinson](https://github.com/leerob), but diverges in technical implementation.
 
 This is a full stack application built with rust and core web technologies. It uses Actix Web for the backend and HTML/CSS/JavaScript for the frontend. The project also uses a PostgreSQL database for persistent storage, and utilizes SQLx as an async, pure Rust SQL crate.
 
 For more information, check out the [About This Site](https://www.rayspace.dev/about) section on the live site.
+
+This repository has been featured in the [Actix/examples](https://github.com/actix/examples) repository, showcasing the power of Actix Web in real-world applications.
 
 ## Technologies Used
 * [Rust](https://www.rust-lang.org/)</br>
