@@ -62,7 +62,7 @@ async fn main() -> std::io::Result<()> {
             )
             .default_service(web::route().to(index))
     })
-    .bind("0.0.0.0:3000")?
+    .bind("0.0.0.0:80")?
     .run()
     .await
 }
