@@ -39,7 +39,7 @@ If you are familiar with Rust, you can build the app from source and run your ow
 
 2. Clone this repository.
 ```bash
-git clone https://github.com/rsxx/rayspace.dev.git
+git clone https://github.com/rx0a/rayspace.dev.git
 cd rayspace.dev
 ```
 
