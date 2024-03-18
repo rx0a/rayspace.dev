@@ -21,7 +21,7 @@ This repository has been included in the [Actix Examples](https://github.com/act
 
 ## Features
 * Single page application functionality with navigation handling and state persistence
-* Dynamic rendering of blog posts based on API data
+* Dynamic rendering of blog posts based on API response
 * Handling of guestbook comments with real-time updating
 * Management of blog post views
 * Syntax highlighting and clipboard functionality for code blocks
