@@ -14,6 +14,7 @@ use services::{
 use sqlx::{postgres::PgPoolOptions};
 use state::AppState;
 use std::env;
+use env_logger;
 
 async fn index() -> std::io::Result<fs::NamedFile> {
     fs::NamedFile::open("./assets/index.html")
@@ -21,6 +22,7 @@ async fn index() -> std::io::Result<fs::NamedFile> {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    env_logger::init();
     dotenv().ok();
     let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
     let pool = PgPoolOptions::new()
@@ -44,6 +46,7 @@ async fn main() -> std::io::Result<()> {
                     .secure(true)
                     .name("User"),
             )
+            .wrap(Logger::new("%t %a \"%r\" %s %b %T \"%{User-Agent}i\""))
             .app_data(app_state.clone())
             .service(auth_routes())
             .service(
