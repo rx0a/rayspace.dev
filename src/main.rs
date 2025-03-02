@@ -15,6 +15,7 @@ use sqlx::{postgres::PgPoolOptions};
 use state::AppState;
 use std::env;
 use env_logger;
+use actix_web::middleware::Logger;
 
 async fn index() -> std::io::Result<fs::NamedFile> {
     fs::NamedFile::open("./assets/index.html")

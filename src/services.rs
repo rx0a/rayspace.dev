@@ -34,8 +34,10 @@ struct Post {
 #[derive(Serialize, FromRow)]
 struct Comment {
     id: i32,
+    userid: String,
     name: String,
     comment: String,
+    timestamp: DateTime<Utc>,
 }
 
 #[derive(Deserialize)]
