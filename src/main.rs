@@ -47,7 +47,10 @@ async fn main() -> std::io::Result<()> {
                     .secure(true)
                     .name("User"),
             )
-            .wrap(Logger::new("%t %a \"%r\" %s %b %T \"%{User-Agent}i\""))
+            .wrap(
+                Logger::new("%t %a \"%r\" %s %b %T \"%{User-Agent}i\"")
+                    .exclude_regex(r"^/(styles|images|scripts)/.*")
+            )
             .app_data(app_state.clone())
             .service(auth_routes())
             .service(

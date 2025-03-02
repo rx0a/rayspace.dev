@@ -46,7 +46,11 @@
       const data = await response.json();
       const stars = data.stars;
       const githubStarsElement = document.querySelector("#githubStars");
-      githubStarsElement.textContent = `${stars} stars on this repo`;
+      if (stars > 0) {
+        githubStarsElement.textContent = `${stars} stars on this repo`;
+      } else {
+        githubStarsElement.textContent = `Counting the stars…`;
+      }
     } catch (error) {
       console.error(error);
       const githubStarsElement = document.querySelector("#githubStars");
