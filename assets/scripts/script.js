@@ -50,7 +50,7 @@
     } catch (error) {
       console.error(error);
       const githubStarsElement = document.querySelector("#githubStars");
-      githubStarsElement.textContent = `0 stars on this repo`;
+      githubStarsElement.textContent = `Counting the stars…`;
     }
   }
   async function handleSubmit(event) {
