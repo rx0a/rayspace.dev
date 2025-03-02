@@ -144,7 +144,7 @@ pub async fn fetch_posts(state: Data<AppState>) -> impl Responder {
 
 #[get("/comments")]
 pub async fn fetch_comments(state: Data<AppState>) -> impl Responder {
-    match sqlx::query_as::<_, Comment>("SELECT id, name, comment FROM comments ORDER BY timestamp DESC LIMIT 100")
+    match sqlx::query_as::<_, Comment>("SELECT id, userid, name, comment, timestamp FROM comments ORDER BY timestamp DESC LIMIT 100")
         .fetch_all(&state.db)
         .await
     {
